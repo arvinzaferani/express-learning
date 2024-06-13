@@ -5,8 +5,11 @@ import * as path from "path";
 import cors from "cors"
 
 const app = express()
-const port = 3001;
-const uiPort =
+
+const port = process.env.PORT ;
+// const uiPort = process.env.UI_PORT
+console.log(port)
+// console.log(uiPort)
 app.listen(port, () => {
     console.log(`U are listening to port ${port}`)
 })
@@ -16,7 +19,6 @@ app.use(express.json())
 app.use(cors({
 origin: "http://localhost:" + port,
 }))
-
 app.get('/api/items', async (req: Request, res: Response) => {
     try {
         const data = await fs.readFile(getDataFile(), "utf8")
