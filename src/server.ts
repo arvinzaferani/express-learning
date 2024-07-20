@@ -1,15 +1,14 @@
-import {Request, Response} from "express";
 import express from "express"
+import {Request, Response} from "express";
 import {promises as fs} from 'fs'
 import * as path from "path";
 import cors from "cors"
-
+// import express from 'express';
 const app = express()
 
-const port = process.env.PORT ;
-// const uiPort = process.env.UI_PORT
+const port = 3002 ;
 console.log(port)
-// console.log(uiPort)
+
 app.listen(port, () => {
     console.log(`U are listening to port ${port}`)
 })
@@ -50,4 +49,7 @@ app.get('/api/items/:id', async (req: Request, res: Response) => {
 
 app.get('/', (req: Request, res: Response) => {
     res.send('salam binamoos')
+})
+app.get('/test', (req:Request, res:Response) => {
+    res.status(200).send('sample test message, if you are getting this message means your the api works well')
 })
